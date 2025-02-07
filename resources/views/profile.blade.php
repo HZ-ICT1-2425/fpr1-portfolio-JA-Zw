@@ -1,7 +1,6 @@
 <x-layout>
     <x-slot:description>Het profiel van Adriaan Zwemer.</x-slot:description>
     <x-slot:title>Mijn profiel</x-slot:title>
-    <x-slot:current>profile</x-slot:current>
 
     <aside class="linker-links">
         Linkjes:

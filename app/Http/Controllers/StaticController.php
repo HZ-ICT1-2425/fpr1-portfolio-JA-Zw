@@ -2,24 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 class StaticController extends Controller
 {
     //
-    function home(){
+    /**
+     * @return Factory|View|Application
+     */
+    public function home()
+    {
         return view("home");
     }
 
-    function profile(){
+    /**
+     * @return Factory|View|Application
+     */
+    public function profile()
+    {
         return view("profile");
     }
 
-    function faq(){
+    /**
+     * @return Factory|View|Application
+     */
+    public function faq()
+    {
         return view("faq");
     }
 
-    function dashboard(){
+    /**
+     * @return Factory|View|Application
+     */
+    public function dashboard()
+    {
         return view("dashboard");
     }
 }

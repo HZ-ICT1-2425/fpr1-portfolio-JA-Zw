@@ -1,7 +1,6 @@
 <x-layout>
     <x-slot:description>Een pagina waarop te zien is hoever Adriaan is met zijn opleiding.</x-slot:description>
     <x-slot:title>Dashboard</x-slot:title>
-    <x-slot:current>dashboard</x-slot:current>
 
     <article>
         <figure class="figuur-rechts"><img src="/images/grafiekje.svg" style="background-color:white;"

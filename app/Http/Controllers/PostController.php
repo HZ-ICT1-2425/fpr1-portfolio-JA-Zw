@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
-
-
+/**
+ * @param $id
+ * @param $posts
+ * @return mixed|void
+ */
 function find($id, $posts)
 {
     foreach ($posts as $post) {
@@ -47,11 +53,20 @@ class PostController extends Controller
 				<p>Dit is allemaal heel belangrijk, maar ICT is ook leuk, denk aan videospellen (nee, niet videospelen) en het internet. Je kan gewoon in Nederland, thuis zitten praten met iemand in Slovenie over een album wat twee minuten eerder uit is gekomen in de VS. (Nou, het praten zou ook via de telefoon kunnen zijn gegaan, zelfs zonder internet voor de uitvinding van VOIP, maar dan zouden we niet naar het album kunnen luisteren.) </p>"],
     ];
 
-    function index(){
+    /**
+     * @return Factory|View|Application
+     */
+    public function index()
+    {
         return view('posts.posts', ['posts' => $this->posts]);
     }
 
-    function view($slug){
+    /**
+     * @param $slug
+     * @return Factory|View|Application
+     */
+    public function view($slug)
+    {
         return view('posts.view', ['post' => find($slug, $this->posts)]);
     }
 }

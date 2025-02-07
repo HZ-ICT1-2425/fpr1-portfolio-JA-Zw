@@ -11,11 +11,11 @@
 	</head>
 	<body>
 		<nav>
-			<div><a href="/" @if($current == "home") data-huidig @endif >Home</a></div>
-			<div><a href="/profile" @if($current == "profile") data-huidig @endif >Profiel</a></div>
-			<div><a href="/faq" @if($current == "faq") data-huidig @endif >FAQ</a></div>
-			<div><a href="/dashboard" @if($current == "dashboard") data-huidig @endif >Dashboard</a></div>
-			<div><a href="/posts" @if($current == "posts") data-huidig @endif >Blog</a></div>
+			<div><a href="/" @if( Route::currentRouteName() == "home") data-huidig @endif >Home</a></div>
+			<div><a href="/profile" @if( Route::currentRouteName() == "profile") data-huidig @endif >Profiel</a></div>
+			<div><a href="/faq" @if( Route::currentRouteName() == "faq") data-huidig @endif >FAQ</a></div>
+			<div><a href="/dashboard" @if( Route::currentRouteName() == "dashboard") data-huidig @endif >Dashboard</a></div>
+			<div><a href="/posts" @if( Route::currentRouteName() == "posts" ||  Route::currentRouteName() == "post") data-huidig @endif >Blog</a></div>
 		</nav>
 		<main>
             {{ $slot }}

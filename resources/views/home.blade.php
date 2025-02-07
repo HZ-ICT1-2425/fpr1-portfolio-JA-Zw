@@ -1,7 +1,6 @@
 <x-layout>
     <x-slot:description>De homepagina van een site voor de opleiding HBO-ICT.</x-slot:description>
     <x-slot:title>Home</x-slot:title>
-    <x-slot:current>home</x-slot:current>
 
     <aside class="linker-links">
         Hier wat random linkjes

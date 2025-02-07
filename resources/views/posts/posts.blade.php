@@ -1,7 +1,6 @@
 <x-layout>
     <x-slot:description>Een overzicht van blogposts.</x-slot:description>
     <x-slot:title>Blog</x-slot:title>
-    <x-slot:current>posts</x-slot:current>
 
 
     <article>

@@ -1,7 +1,6 @@
 <x-layout>
     <x-slot:description>Een pagina met vaalgestelde vragen en hun antwoorden.</x-slot:description>
     <x-slot:title>FAQ</x-slot:title>
-    <x-slot:current>faq</x-slot:current>
     <article>
         <figure class="figuur-rechts" style="width:80px"><img src="/images/hz-logo.svg" width="80"
                                                               alt="Het logo van de HZ">
