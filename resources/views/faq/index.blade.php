@@ -7,7 +7,7 @@
             <figcaption>Het logo van de HZ</figcaption>
         </figure>
         <h1>Veelgestelde vragen</h1>
-        <a href="{{route("faq.create")}}">Maak een FAQ.</a>
+        <a class="knop" href="{{route("faq.create")}}">maak een FAQ</a>
         @foreach($faqs as $faq)
             <x-faq>
                 <x-slot:question>{!!$faq["question"]!!}</x-slot:question>

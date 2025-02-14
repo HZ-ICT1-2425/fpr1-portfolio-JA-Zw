@@ -34,15 +34,22 @@ nav div {
     padding: 0px;
 }
 
-nav div a {
+nav div a, .knop {
     height: 20pt;
     display: inline-block;
-    min-width: 6em;
+    min-width: calc( 6em - 6px );
     background-color: #999;
     text-align: center;
     border-radius: 6px;
     text-decoration: none;
     color: black;
+    font-size: 16pt;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.knop {
+    margin: 1px;
 }
 
 a[data-huidig] {
@@ -63,11 +70,11 @@ tr[data-huidig] > td {
     text-align: center;
 }
 
-nav div:hover a {
+nav div:hover a, .knop:hover {
     background-color: #aaa;
 }
 
-nav div a:visited {
+nav div a:visited, .knop:visited {
     color: black; /*als esv override voor in menutje*/
 }
 

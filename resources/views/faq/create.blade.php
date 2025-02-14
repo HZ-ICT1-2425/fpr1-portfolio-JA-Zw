@@ -7,7 +7,7 @@
         <form action="{{route("faq.submit")}}" method="POST">
             @csrf
             <label for="question"><p>Titel: </p></label><input type="text" name="question" @if(!empty($request->get("question")))value="{{ $request->get("question") }}"@endif><br>
-            <label for="answer"><p>Inhoud: </p></label><textarea name="answer">@if(!empty($request->get("answer"))){{ $request->get("answer") }}"@endif</textarea><br>
+            <label for="answer"><p>Inhoud: </p></label><textarea name="answer">@if(!empty($request->get("answer"))){{ $request->get("answer") }}@endif</textarea><br>
             <input type="submit">
             <a href="{{route("faq")}}"><button type="button">ga terug</button></a>
         </form>

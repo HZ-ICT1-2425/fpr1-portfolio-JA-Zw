@@ -7,8 +7,8 @@
         <form action="{{route("faq.update", $faq->id)}}" method="POST">
             @csrf
             @method("PUT")
-            <label for="question"><p>Titel: </p></label><input type="text" name="question" value="{{ $request->get("question") ?? $faq->question }}"><br>
-            <label for="answer"><p>Inhoud: </p></label><textarea name="answer">{{ $request->get("answer") ?? $faq->answer }}</textarea><br>
+            <label for="question"><p>Titel: </p></label><input type="text" name="question" value="{!! $request->get("question") ?? $faq->question !!}"><br>
+            <label for="answer"><p>Inhoud: </p></label><textarea name="answer">{!! $request->get("answer") ?? $faq->answer !!}</textarea><br>
             <input type="submit">
             <a href="{{route("faq")}}"><button type="button">ga terug</button></a>
         </form>

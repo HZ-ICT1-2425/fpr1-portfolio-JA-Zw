@@ -60,15 +60,22 @@ class FAQController extends Controller
 
     /**
      * @param Request $request
-     * @param $id
+     * @param FAQ $faq
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FAQ $faq)
     {
         if (empty($request->post("question")) || empty($request->post("answer"))) {
-            return redirect("/faq/edit/$id?question=".urlencode($request->post()["question"]) . "&answer=" .urlencode($request->post("answer")));
+            return redirect("/faq/edit/" .$faq->id
+                . "?question=".urlencode($request->post("question"))
+                . "&answer=" .urlencode($request->post("answer"))
+            );
         } else {
-            FAQ::where("id", $id)->update(["question" => htmlentities($request->post("question")), "answer" => htmlentities($request->post("answer"))]);
+            $faq->update([
+                "question" => htmlentities($request->post("question")),
+                "answer" => htmlentities($request->post("answer"))
+            ]);
+            $faq->save();
             return redirect("/faq");
         }
     }
