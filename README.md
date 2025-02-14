@@ -69,6 +69,7 @@ The simplest way that ensures all the files are as close to a fresh installation
 ## Authors
 
 * **Daan de Waard** - *Initial work* - [dwaard](https://github.com/dwaard)
+* **Adriaan Zwemer** - *Original design, migration from static html to blade/php* - [JA-Zw](https://github.com/JA-Zw)
 
 See also the list of [contributors](https://github.com/HZ-HBO-ICT/laravel-skeleton-app/graphs/contributors) who
 participated in this project.
