@@ -10,21 +10,31 @@ use Illuminate\Http\Request;
 
 class FAQController extends Controller
 {
-    //
-
     /**
-     * @return Factory|View|Application
+     * @return View
      */
     public function index()
     {
-        return view("faq", ["faqs" => FAQ::all()]);
+        return view("faq.index", ["faqs" => FAQ::all()]);
     }
 
-    public function create(Request $request){
+    /**
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function create(Request $request)
+    {
         return view("faq.create", ["request" => $request]);
     }
 
-    public function submit(Request $request){
+    /**
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function submit(Request $request)
+    {
         if (empty($request->post("question")) || empty($request->post("answer"))) {
             return redirect("/faq/create?question=".urlencode($request->post()["question"]) . "&answer=" .urlencode($request->post("answer")));
         } else {
@@ -33,17 +43,28 @@ class FAQController extends Controller
         }
     }
 
-    public function edit(Request $request, $id){
-        $faq = FAQ::find($id);
+
+    /**
+     *
+     * @param Request $request
+     * @param FAQ $faq
+     * @return View
+     */
+    public function edit(Request $request, FAQ $faq)
+    {
         return view("faq.edit", [
-            "id" => $id,
             "request" => $request,
             "faq" => $faq
         ]);
     }
 
-    public function update(Request $request, $id){
-        //$faq = FAQ::find($id);
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
+    {
         if (empty($request->post("question")) || empty($request->post("answer"))) {
             return redirect("/faq/edit/$id?question=".urlencode($request->post()["question"]) . "&answer=" .urlencode($request->post("answer")));
         } else {
@@ -52,7 +73,12 @@ class FAQController extends Controller
         }
     }
 
-    public function delete($id) {
+    /**
+     * @param $id
+     * @return void
+     */
+    public function delete($id)
+    {
         FAQ::destroy($id);
     }
 }

@@ -11,7 +11,7 @@ class StaticController extends Controller
 {
     //
     /**
-     * @return Factory|View|Application
+     * @return View
      */
     public function home()
     {
@@ -19,7 +19,7 @@ class StaticController extends Controller
     }
 
     /**
-     * @return Factory|View|Application
+     * @return View
      */
     public function profile()
     {
@@ -27,7 +27,7 @@ class StaticController extends Controller
     }
 
     /**
-     * @return Factory|View|Application
+     * @return View
      */
     public function dashboard()
     {

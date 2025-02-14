@@ -4,7 +4,7 @@
     <article>
         <h1>Bewerk een FAQ.</h1>
         @if(key_exists("question", $_GET) || key_exists("answer", $_GET)) <b style="color: red;">Yo, je hebt iets leeggelaten.</b>@endif
-        <form action="{{route("faq.update", $id)}}" method="POST">
+        <form action="{{route("faq.update", $faq->id)}}" method="POST">
             @csrf
             @method("PUT")
             <label for="question"><p>Titel: </p></label><input type="text" name="question" value="{{ $request->get("question") ?? $faq->question }}"><br>
