@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
-
 class PostController extends Controller
 {
 
@@ -36,8 +35,7 @@ class PostController extends Controller
         if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
             return redirect("/posts/create?title=" . urlencode($request->post("title"))
                 . "&body=" . urlencode($request->post("body"))
-                . "&preview=" . urlencode($request->post("preview"))
-            );
+                . "&preview=" . urlencode($request->post("preview")));
         } else {
             Post::create([
                 "title" => htmlentities($request->post("title")),
@@ -104,8 +102,7 @@ class PostController extends Controller
         if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
             return redirect("/posts/edit/". $post->slug . "?title=" . urlencode($request->post("title"))
                 . "&body=" . urlencode($request->post("body"))
-                . "&preview=" . urlencode($request->post("preview"))
-            );
+                . "&preview=" . urlencode($request->post("preview")));
         } else {
             $post->update(["title" => htmlentities($request->post("title")),
                 "body" => htmlentities($request->post("body")),
@@ -125,5 +122,4 @@ class PostController extends Controller
 
         Post::destroy($id);
     }
-
 }

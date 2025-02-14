@@ -6,6 +6,7 @@ use App\Models\FAQ;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class FAQController extends Controller
@@ -31,14 +32,18 @@ class FAQController extends Controller
     /**
      *
      * @param Request $request
-     * @return View
+     * @return RedirectResponse
      */
     public function submit(Request $request)
     {
         if (empty($request->post("question")) || empty($request->post("answer"))) {
-            return redirect("/faq/create?question=".urlencode($request->post()["question"]) . "&answer=" .urlencode($request->post("answer")));
+            return redirect("/faq/create?question=".urlencode($request->post()["question"])
+                . "&answer=" .urlencode($request->post("answer")));
         } else {
-            FAQ::create(["question" => htmlentities($request->post("question")), "answer" => htmlentities($request->post("answer"))]);
+            FAQ::create([
+                "question" => htmlentities($request->post("question")),
+                "answer" => htmlentities($request->post("answer"))
+            ]);
             return redirect("/faq");
         }
     }
@@ -68,8 +73,7 @@ class FAQController extends Controller
         if (empty($request->post("question")) || empty($request->post("answer"))) {
             return redirect("/faq/edit/" .$faq->id
                 . "?question=".urlencode($request->post("question"))
-                . "&answer=" .urlencode($request->post("answer"))
-            );
+                . "&answer=" .urlencode($request->post("answer")));
         } else {
             $faq->update([
                 "question" => htmlentities($request->post("question")),
