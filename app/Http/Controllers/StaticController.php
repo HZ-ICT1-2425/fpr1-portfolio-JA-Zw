@@ -29,14 +29,6 @@ class StaticController extends Controller
     /**
      * @return Factory|View|Application
      */
-    public function faq()
-    {
-        return view("faq");
-    }
-
-    /**
-     * @return Factory|View|Application
-     */
     public function dashboard()
     {
         return view("dashboard");

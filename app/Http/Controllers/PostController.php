@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.posts', ['posts' => $this->posts]);
+        return view('posts.posts', ['posts' => $this->getPosts()]);
     }
 
     /**
@@ -67,6 +67,10 @@ class PostController extends Controller
      */
     public function view($slug)
     {
-        return view('posts.view', ['post' => find($slug, $this->posts)]);
+        return view('posts.view', ['post' => find($slug, $this->getPosts())]);
+    }
+
+    private function getPosts(){
+        return $this->posts;
     }
 }
