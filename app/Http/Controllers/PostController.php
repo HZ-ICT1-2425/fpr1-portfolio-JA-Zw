@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -13,7 +15,16 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $config = HTMLPurifier_Config::createDefault();
+        $this->purifier = new HTMLPurifier($config);
+    }
 
+    protected HTMLPurifier $purifier;
     /**
      * @param Request $request
      * @return View
@@ -35,11 +46,11 @@ class PostController extends Controller
         if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
             return redirect("/posts/create?title=" . urlencode($request->post("title"))
                 . "&body=" . urlencode($request->post("body"))
-                . "&preview=" . urlencode($request->post("preview")));
+                . "&preview=" . urlencode($this->purifier->purify($request->post("preview"))));
         } else {
             Post::create([
                 "title" => htmlentities($request->post("title")),
-                "body" => htmlentities($request->post("body")),
+                "body" => $this->purifier->purify($request->post("body")),
                 "preview" => htmlentities($request->post("preview")),
                 "slug" => Str::slug($request->post("title"))
             ]);
@@ -95,7 +106,7 @@ class PostController extends Controller
     /**
      * @param Request $request
      * @param Post $post
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(Request $request, Post $post)
     {
@@ -105,7 +116,7 @@ class PostController extends Controller
                 . "&preview=" . urlencode($request->post("preview")));
         } else {
             $post->update(["title" => htmlentities($request->post("title")),
-                "body" => htmlentities($request->post("body")),
+                "body" => $this->purifier->purify($request->post("body")),
                 "preview" => htmlentities($request->post("preview"))
             ]);
             $post->save();
@@ -117,9 +128,8 @@ class PostController extends Controller
      * @param $id
      * @return void
      */
-    public function delete($id)
+    public function delete($id): void
     {
-
         Post::destroy($id);
     }
 }

@@ -8,6 +8,7 @@
 		<title>{{$title}}</title>
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="icon" type="image/xml+svg" href="/images/favicon.svg">
+		@if(isset($head)) {!! $head !!} @endif
 	</head>
 	<body>
 		<nav>
