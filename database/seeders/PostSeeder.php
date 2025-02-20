@@ -31,6 +31,7 @@ class PostSeeder extends Seeder
 				<p>ICT is een belangrijk vak, een groot deel van de wereld vertrouwt erop dat computers blijven weken.</p>
 				<p>Als de computers uitvallen bij een bank, is dat catastrofaal. Het vertrouwen in de bank zal verdwijnen. Dit is een vrij extreem geval, maar als het systeem van de NS kapot gaat ligt het hele land stil voor een dag.</p>
 				<p>Dit is allemaal heel belangrijk, maar ICT is ook leuk, denk aan videospellen (nee, niet videospelen) en het internet. Je kan gewoon in Nederland, thuis zitten praten met iemand in Slovenie over een album wat twee minuten eerder uit is gekomen in de VS. (Nou, het praten zou ook via de telefoon kunnen zijn gegaan, zelfs zonder internet voor de uitvinding van VOIP, maar dan zouden we niet naar het album kunnen luisteren.) </p>"],
+        ["title" => "Een lijst van Honden", "slug"=>"hond", "preview" => "Ach, ja", "body" => "Ach, ja. In de opdracht eerder dit jaar moest er geen 6e post zijn, dus deze is er nu, en het onderwerp is dus anders."]
     ];
 
     /**

@@ -10,7 +10,7 @@
         @else
         <ol>
             @foreach($posts as $post)
-                <li><b>{!! $post->title !!} (<a href="/posts/{{$post->slug}}">lees</a>)</b></br>{!! $post->preview !!}...</li>
+                <li><b>{{ $post->title }} (<a href="{{route("posts.show", $post->slug)}}">lees</a>)</b></br>{{ $post->preview }}...</li>
             @endforeach
         </ol>
         @endif

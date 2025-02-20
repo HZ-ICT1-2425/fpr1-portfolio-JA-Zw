@@ -66,8 +66,8 @@ tr[data-huidig] > td {
 }
 
 .sh {
-    background-image: linear-gradient(to left, #108CEA, #9B0E63);
-    text-align: center;
+    background-image: linear-gradient(to left, #108CEA, #2B4090);
+    /*text-align: center;*/
 }
 
 nav div:hover a, .knop:hover {

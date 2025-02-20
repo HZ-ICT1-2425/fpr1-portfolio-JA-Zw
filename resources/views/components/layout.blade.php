@@ -14,9 +14,9 @@
 		<nav>
 			<div><a href="{{route("home")}}" @if( Route::currentRouteName() == "home") data-huidig @endif >Home</a></div>
 			<div><a href="{{route("profile")}}" @if( Route::currentRouteName() == "profile") data-huidig @endif >Profiel</a></div>
-			<div><a href="{{route("faq")}}" @if( Route::currentRouteName() == "faq" || Route::currentRouteName() == "faq.create" || Route::currentRouteName() == "faq.edit" ) data-huidig @endif >FAQ</a></div>
+			<div><a href="{{route("faq.index")}}" @if( Route::currentRouteName() == "faq" || Route::currentRouteName() == "faq.create" || Route::currentRouteName() == "faq.edit" ) data-huidig @endif >FAQ</a></div>
 			<div><a href="{{route("dashboard")}}" @if( Route::currentRouteName() == "dashboard") data-huidig @endif >Dashboard</a></div>
-			<div><a href="{{route("posts")}}" @if( Route::currentRouteName() == "posts" ||  Route::currentRouteName() == "post" || Route::currentRouteName() == "posts.create") data-huidig @endif >Blog</a></div>
+			<div><a href="{{route("posts.index")}}" @if( Route::currentRouteName() == "posts.index" ||  Route::currentRouteName() == "post" || Route::currentRouteName() == "posts.create") data-huidig @endif >Blog</a></div>
 		</nav>
 		<main>
             {{ $slot }}

@@ -6,6 +6,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\Test;
 
 class StaticController extends Controller
 {
@@ -30,6 +32,6 @@ class StaticController extends Controller
      */
     public function dashboard()
     {
-        return view("dashboard");
+        return view("dashboard", ["courses" => Course::all(), "tests" => Test::all()]);
     }
 }

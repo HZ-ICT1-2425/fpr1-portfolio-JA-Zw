@@ -10,9 +10,9 @@
         <a class="knop" href="{{route("faq.create")}}">maak een FAQ</a>
         @foreach($faqs as $faq)
             <x-faq>
-                <x-slot:question>{!!$faq["question"]!!}</x-slot:question>
+                <x-slot:question>{{$faq["question"]}}</x-slot:question>
                 <x-slot:answer>{!!$faq["answer"]!!}</x-slot:answer>
-                <x-slot:id>{!!$faq["id"]!!}</x-slot:id>
+                <x-slot:id>{{$faq["id"]}}</x-slot:id>
             </x-faq>
         @endforeach
         @if(count($faqs) < 1) <h2>Er zijn geen FAQs.</h2> @endif

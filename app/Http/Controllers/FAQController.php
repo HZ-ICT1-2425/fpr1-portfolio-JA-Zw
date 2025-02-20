@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\FAQ;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -11,6 +13,15 @@ use Illuminate\Http\Request;
 
 class FAQController extends Controller
 {
+    protected HTMLPurifier $purifier;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $config = HTMLPurifier_Config::createDefault();
+        $this->purifier = new HTMLPurifier($config);
+    }
     /**
      * @return View
      */
@@ -34,15 +45,15 @@ class FAQController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function submit(Request $request)
+    public function store(Request $request)
     {
         if (empty($request->post("question")) || empty($request->post("answer"))) {
             return redirect("/faq/create?question=".urlencode($request->post()["question"])
                 . "&answer=" .urlencode($request->post("answer")));
         } else {
             FAQ::create([
-                "question" => htmlentities($request->post("question")),
-                "answer" => htmlentities($request->post("answer"))
+                "question" => $request->post("question"),
+                "answer" => $this->purifier->purify($request->post("answer"))
             ]);
             return redirect("/faq");
         }
@@ -76,8 +87,8 @@ class FAQController extends Controller
                 . "&answer=" .urlencode($request->post("answer")));
         } else {
             $faq->update([
-                "question" => htmlentities($request->post("question")),
-                "answer" => htmlentities($request->post("answer"))
+                "question" => $request->post("question"),
+                "answer" => $this->purifier->purify($request->post("answer"))
             ]);
             $faq->save();
             return redirect("/faq");
@@ -88,7 +99,7 @@ class FAQController extends Controller
      * @param $id
      * @return void
      */
-    public function delete($id)
+    public function destroy($id)
     {
         FAQ::destroy($id);
     }

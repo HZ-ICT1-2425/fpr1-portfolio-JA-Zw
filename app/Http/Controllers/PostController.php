@@ -41,7 +41,7 @@ class PostController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function submit(Request $request)
+    public function store(Request $request)
     {
         if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
             return redirect("/posts/create?title=" . urlencode($request->post("title"))
@@ -49,12 +49,12 @@ class PostController extends Controller
                 . "&preview=" . urlencode($this->purifier->purify($request->post("preview"))));
         } else {
             Post::create([
-                "title" => htmlentities($request->post("title")),
+                "title" => $request->post("title"),
                 "body" => $this->purifier->purify($request->post("body")),
-                "preview" => htmlentities($request->post("preview")),
+                "preview" => $request->post("preview"),
                 "slug" => Str::slug($request->post("title"))
             ]);
-            return redirect("/posts");
+            return redirect(route('posts.index'));
         }
     }
 
@@ -84,9 +84,9 @@ class PostController extends Controller
      * @param $slug
      * @return View
      */
-    public function view($slug)
+    public function show($slug)
     {
-        return view('posts.view', ['post' => $this->find($slug)]);
+        return view('posts.show', ['post' => $this->find($slug)]);
     }
 
     /**
@@ -115,12 +115,12 @@ class PostController extends Controller
                 . "&body=" . urlencode($request->post("body"))
                 . "&preview=" . urlencode($request->post("preview")));
         } else {
-            $post->update(["title" => htmlentities($request->post("title")),
+            $post->update(["title" => $request->post("title"),
                 "body" => $this->purifier->purify($request->post("body")),
-                "preview" => htmlentities($request->post("preview"))
+                "preview" => $request->post("preview")
             ]);
             $post->save();
-            return redirect(route("post", $post->slug));
+            return redirect(route("posts.show", $post->slug));
         }
     }
 
@@ -128,7 +128,7 @@ class PostController extends Controller
      * @param $id
      * @return void
      */
-    public function delete($id): void
+    public function destroy($id): void
     {
         Post::destroy($id);
     }
