@@ -29,7 +29,11 @@ class Course extends Model
         return $a * $this->credits;
     }
 
-    public function getPassed(): bool {
+    /**
+     * @return bool
+     */
+    public function getPassed(): bool
+    {
         return $this->getECsObtained() >= $this->credits;
     }
 }
