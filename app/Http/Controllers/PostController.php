@@ -43,10 +43,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->flash();
         if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
-            return redirect("/posts/create?title=" . urlencode($request->post("title"))
-                . "&body=" . urlencode($request->post("body"))
-                . "&preview=" . urlencode($this->purifier->purify($request->post("preview"))));
+            return redirect(route("posts.create"))->with("fout", true);
         } else {
             Post::create([
                 "title" => $request->post("title"),
@@ -110,10 +109,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->flash();
         if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
-            return redirect("/posts/edit/". $post->slug . "?title=" . urlencode($request->post("title"))
-                . "&body=" . urlencode($request->post("body"))
-                . "&preview=" . urlencode($request->post("preview")));
+            return redirect(route("posts.edit", $post->slug))->with("fout", true);
         } else {
             $post->update(["title" => $request->post("title"),
                 "body" => $this->purifier->purify($request->post("body")),

@@ -4,13 +4,13 @@
     <x-slot:head><x-include-trix /></x-slot:head>
     <article>
         <h1>Bewerk een FAQ.</h1>
-        @if(key_exists("question", $_GET) || key_exists("answer", $_GET)) <b style="color: red;">Yo, je hebt iets leeggelaten.</b>@endif
+        @if(session("fout")) <b style="color: red;">Yo, je hebt iets leeggelaten.</b>@endif
         <form action="{{route("faq.update", $faq->id)}}" method="POST">
             @csrf
             @method("PUT")
-            <label for="question"><p>Titel: </p></label><input type="text" name="question" value="{{ $request->get("question") ?? $faq->question }}"><br>
-            <!--<label for="answer"><p>Inhoud: </p></label><textarea name="answer">{{ $request->get("answer") ?? $faq->answer }}</textarea><br>-->
-            <label for="answer"><p>Inhoud: </p></label><input type="hidden" id="answer" name="answer" value="{{ $request->get("answer") ?? $faq->answer }}"><trix-editor input="answer"></trix-editor><br>
+            <label for="question"><p>Titel: </p></label><input type="text" name="question" value="{{ old("question") ?? $faq->question }}"><br>
+            <!--<label for="answer"><p>Inhoud: </p></label><textarea name="answer">{{ old("answer") ?? $faq->answer }}</textarea><br>-->
+            <label for="answer"><p>Inhoud: </p></label><input type="hidden" id="answer" name="answer" value="{{ old("answer") ?? $faq->answer }}"><trix-editor input="answer"></trix-editor><br>
 
             <input type="submit">
             <a href="{{route("faq.index")}}"><button type="button">ga terug</button></a>

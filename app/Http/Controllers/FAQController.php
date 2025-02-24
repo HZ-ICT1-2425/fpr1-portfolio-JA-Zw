@@ -47,9 +47,9 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
+        $request->flash();
         if (empty($request->post("question")) || empty($request->post("answer"))) {
-            return redirect("/faq/create?question=".urlencode($request->post()["question"])
-                . "&answer=" .urlencode($request->post("answer")));
+            return redirect(route("faq.create"))->with("fout", true);
         } else {
             FAQ::create([
                 "question" => $request->post("question"),
@@ -81,10 +81,9 @@ class FAQController extends Controller
      */
     public function update(Request $request, FAQ $faq)
     {
+        $request->flash();
         if (empty($request->post("question")) || empty($request->post("answer"))) {
-            return redirect("/faq/edit/" .$faq->id
-                . "?question=".urlencode($request->post("question"))
-                . "&answer=" .urlencode($request->post("answer")));
+            return redirect(route("faq.edit", $faq))->with("fout", true);
         } else {
             $faq->update([
                 "question" => $request->post("question"),
