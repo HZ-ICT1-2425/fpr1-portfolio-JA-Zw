@@ -15,6 +15,8 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    protected HTMLPurifier $purifier;
+
     /**
      * Constructor
      */
@@ -24,16 +26,13 @@ class PostController extends Controller
         $this->purifier = new HTMLPurifier($config);
     }
 
-    protected HTMLPurifier $purifier;
     /**
      * @param Request $request
      * @return View
      */
     public function create(Request $request)
     {
-        return view('posts.create', [
-            "request" => $request
-        ]);
+        return view('posts.create');
     }
 
     /**
@@ -43,18 +42,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->flash();
-        if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
-            return redirect(route("posts.create"))->with("fout", true);
-        } else {
-            Post::create([
-                "title" => $request->post("title"),
-                "body" => $this->purifier->purify($request->post("body")),
-                "preview" => $request->post("preview"),
-                "slug" => Str::slug($request->post("title"))
-            ]);
-            return redirect(route('posts.index'));
-        }
+        $validated = $request->validate([
+            "title" => "required",
+            "body" => "required",
+            "preview" => "required",
+        ]);
+        Post::create([
+            "title" => $validated["title"],
+            "body" => $this->purifier->purify($validated["body"]),
+            "preview" => $validated["preview"],
+            "slug" => Str::slug($validated["title"])
+        ]);
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -93,11 +92,10 @@ class PostController extends Controller
      * @param $slug
      * @return View
      */
-    public function edit(Request $request, $slug)
+    public function edit($slug)
     {
         $post = $this->find($slug);
         return view("posts.edit", [
-            "request" => $request,
             "post" => $post
         ]);
     }
@@ -109,25 +107,28 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->flash();
-        if (empty($request->post("title")) || empty($request->post("body")) || empty($request->post("preview"))) {
-            return redirect(route("posts.edit", $post->slug))->with("fout", true);
-        } else {
-            $post->update(["title" => $request->post("title"),
-                "body" => $this->purifier->purify($request->post("body")),
-                "preview" => $request->post("preview")
-            ]);
-            $post->save();
-            return redirect(route("posts.show", $post->slug));
-        }
+
+        $validated = $request->validate([
+            "title" => "required",
+            "body" => "required",
+            "preview" => "required",
+        ]);
+        $post->update([
+            "title" => $validated["title"],
+            "body" => $this->purifier->purify($validated["body"]),
+            "preview" => $validated["preview"]
+        ]);
+        $post->save();
+        return redirect(route("posts.show", $post->slug));
     }
 
     /**
      * @param $id
-     * @return void
+     * @return RedirectResponse
      */
-    public function destroy($id): void
+    public function destroy(Post $post)
     {
-        Post::destroy($id);
+        $post->delete();
+        return redirect(route("posts.index"));
     }
 }

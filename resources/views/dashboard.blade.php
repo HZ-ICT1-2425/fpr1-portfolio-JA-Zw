@@ -1,6 +1,4 @@
-<x-layout>
-    <x-slot:description>Een pagina waarop te zien is hoever Adriaan is met zijn opleiding.</x-slot:description>
-    <x-slot:title>Dashboard</x-slot:title>
+<x-layout title="Dashboard" description="Een pagina waarop te zien is hoever Adriaan is met zijn opleiding.">
     <?php $a = 0; $b = 0; foreach($courses as $course){$a += $course->getECsObtained();$b += $course->credits;}?>
     <article>
         <h1>Dashboard</h1>

@@ -1,7 +1,4 @@
-<x-layout>
-    <x-slot:description>Het profiel van Adriaan Zwemer.</x-slot:description>
-    <x-slot:title>Mijn profiel</x-slot:title>
-
+<x-layout title="Mijn profiel" description="Het profiel van Adriaan Zwemer.">
     <aside class="linker-links">
         Linkjes:
         <ul>

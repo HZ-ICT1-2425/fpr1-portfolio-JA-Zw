@@ -1,6 +1,4 @@
-<x-layout>
-    <x-slot:description>Een pagina met vaalgestelde vragen en hun antwoorden.</x-slot:description>
-    <x-slot:title>FAQ</x-slot:title>
+<x-layout description="Een pagina met vaalgestelde vragen en hun antwoorden." title="FAQ">
     <article>
         <figure class="figuur-rechts" style="width:80px"><img src="/images/hz-logo.svg" width="80"
                                                               alt="Het logo van de HZ">
@@ -22,13 +20,7 @@
     <script type="application/javascript">
         function deletePost(id){
             if(confirm("Weet je zeker dat je dat wil doen?")){
-                fetch(`/faq/${id}`, {
-                    method: 'delete',
-                    headers: {'Content-Type': 'application/json', "X-CSRF-TOKEN": "{{ csrf_token() }}"},
-                    body: ""
-                }).then((res)=>{
-                    location.reload();
-                });
+                document.getElementById(`delete${id}`).submit();
             }
         }
     </script>

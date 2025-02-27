@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 class FAQController extends Controller
 {
     protected HTMLPurifier $purifier;
+
     /**
      * Constructor
      */
@@ -22,6 +23,7 @@ class FAQController extends Controller
         $config = HTMLPurifier_Config::createDefault();
         $this->purifier = new HTMLPurifier($config);
     }
+
     /**
      * @return View
      */
@@ -47,16 +49,15 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
-        $request->flash();
-        if (empty($request->post("question")) || empty($request->post("answer"))) {
-            return redirect(route("faq.create"))->with("fout", true);
-        } else {
-            FAQ::create([
-                "question" => $request->post("question"),
-                "answer" => $this->purifier->purify($request->post("answer"))
-            ]);
-            return redirect("/faq");
-        }
+        $validated = $request->validate([
+            "question" => "required",
+            "answer" => "required"
+        ]);
+        FAQ::create([
+            "question" => $validated["question"],
+            "answer" => $this->purifier->purify($validated["answer"])
+        ]);
+        return redirect("/faq");
     }
 
 
@@ -81,25 +82,25 @@ class FAQController extends Controller
      */
     public function update(Request $request, FAQ $faq)
     {
-        $request->flash();
-        if (empty($request->post("question")) || empty($request->post("answer"))) {
-            return redirect(route("faq.edit", $faq))->with("fout", true);
-        } else {
-            $faq->update([
-                "question" => $request->post("question"),
-                "answer" => $this->purifier->purify($request->post("answer"))
-            ]);
-            $faq->save();
-            return redirect("/faq");
-        }
+        $validated = $request->validate([
+            "question" => "required",
+            "answer" => "required"
+        ]);
+        $faq->update([
+            "question" => $validated["question"],
+            "answer" => $this->purifier->purify($validated["answer"])
+        ]);
+        $faq->save();
+        return redirect(route("faq.index"));
     }
 
     /**
      * @param $id
-     * @return void
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(FAQ $faq)
     {
-        FAQ::destroy($id);
+        $faq->delete();
+        return redirect(route("faq.index"));
     }
 }

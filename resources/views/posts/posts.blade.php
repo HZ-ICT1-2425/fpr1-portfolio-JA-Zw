@@ -1,7 +1,4 @@
-<x-layout>
-    <x-slot:description>Een overzicht van blogposts.</x-slot:description>
-    <x-slot:title>Blog</x-slot:title>
-
+<x-layout title="Blog" description="Een overzicht van blogposts.">
     <article>
         <h1>Blogposts</h1>
         <a class="knop" href="{{route("posts.create")}}">maak een blogpost</a>
