@@ -32,6 +32,18 @@ class StaticController extends Controller
      */
     public function dashboard()
     {
-        return view("dashboard", ["courses" => Course::all(), "tests" => Test::all()]);
+        $courses = Course::all();
+        $ecsBehaald = 0;
+        $ecsTotaal = 0;
+        foreach ($courses as $course) {
+            $ecsBehaald += $course->getECsObtained();
+            $ecsTotaal += $course->credits;
+        }
+        return view("dashboard", [
+            "courses" => $courses,
+            "tests" => Test::all(),
+            "ecsBehaald" => $ecsBehaald,
+            "ecsTotaal" => $ecsTotaal
+        ]);
     }
 }

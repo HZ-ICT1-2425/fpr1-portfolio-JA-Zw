@@ -1,5 +1,4 @@
 <x-layout title="Dashboard" description="Een pagina waarop te zien is hoever Adriaan is met zijn opleiding.">
-    <?php $a = 0; $b = 0; foreach($courses as $course){$a += $course->getECsObtained();$b += $course->credits;}?>
     <article>
         <h1>Dashboard</h1>
         @if($courses->count() > 0)
@@ -28,8 +27,8 @@
                 </tbody>
             </table>
 
-            <p>Behaalde studiepunten: <b>{{$a}}</b>/{{$b}}EP</p>
-            <meter min="0" max="{{$b}}" value="{{$a}}" low="45" optimum="60"></meter>
+            <p>Behaalde studiepunten: <b>{{$ecsBehaald}}</b>/{{$ecsTotaal}}EP</p>
+            <meter min="0" max="{{$ecsTotaal}}" value="{{$ecsBehaald}}" low="45" optimum="60"></meter>
         @else
         Er is geen data beschikbaar.
         @endif
