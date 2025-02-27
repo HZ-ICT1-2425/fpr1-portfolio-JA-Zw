@@ -1,0 +1,62 @@
+[
+  {
+    "id": 2,
+    "cu_code": "CU75001V3",
+    "name": "PCO",
+    "credits": 2.5
+  },
+  {
+    "id": 3,
+    "cu_code": "CU75003V1",
+    "name": "PBA ",
+    "credits": 5.0
+  },
+  {
+    "id": 4,
+    "cu_code": "CU75002V2",
+    "name": "CSB",
+    "credits": 5.0
+  },
+  {
+    "id": 5,
+    "cu_code": "CU75004V1",
+    "name": "OOP ",
+    "credits": 10.0
+  },
+  {
+    "id": 6,
+    "cu_code": "CU75080V2",
+    "name": "FPR1",
+    "credits": 10.0
+  },
+  {
+    "id": 7,
+    "cu_code": "CU75081V1",
+    "name": "BICB ",
+    "credits": 2.5
+  },
+  {
+    "id": 8,
+    "cu_code": "CU75054V1",
+    "name": "PPW1 (personality)",
+    "credits": 1.25
+  },
+  {
+    "id": 9,
+    "cu_code": "CU75011V3",
+    "name": "FPR 2",
+    "credits": 10.0
+  },
+  {
+    "id": 10,
+    "cu_code": "CU75068V3",
+    "name": "PPD-E",
+    "credits": 12.5
+  },
+  {
+    "id": 11,
+    "cu_code": "CU75056V1",
+    "name": "ITP1 (personality)",
+    "credits": 1.25
+  }
+]
