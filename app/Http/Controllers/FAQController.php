@@ -57,7 +57,7 @@ class FAQController extends Controller
             "question" => $validated["question"],
             "answer" => $this->purifier->purify($validated["answer"])
         ]);
-        return redirect("/faq");
+        return redirect(route("faq.index"));
     }
 
 
