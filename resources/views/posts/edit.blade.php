@@ -7,7 +7,6 @@
             @method("PUT")
             <label for="title"><p>Titel: </p></label><input type="text" name="title" value="{{ old("title", $post->title) }}"><br>
             @error("title")<p style="color:red;">{{$message}}</p>@enderror
-            <!--<label for="body"><p>Inhoud: </p></label><textarea name="body"></textarea><br>-->
 
             <label for="body"><p>Inhoud: </p></label><input type="hidden" id="body" name="body" value="{{ old("body", $post->body) }}"><trix-editor input="body"></trix-editor><br>
             @error("body")<p style="color:red;">{{$message}}</p>@enderror
