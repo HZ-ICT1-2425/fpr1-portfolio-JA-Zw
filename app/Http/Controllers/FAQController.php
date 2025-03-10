@@ -34,12 +34,11 @@ class FAQController extends Controller
 
     /**
      *
-     * @param Request $request
      * @return View
      */
-    public function create(Request $request)
+    public function create()
     {
-        return view("faq.create", ["request" => $request]);
+        return view("faq.create");
     }
 
     /**
@@ -63,14 +62,12 @@ class FAQController extends Controller
 
     /**
      *
-     * @param Request $request
      * @param FAQ $faq
      * @return View
      */
-    public function edit(Request $request, FAQ $faq)
+    public function edit(FAQ $faq)
     {
         return view("faq.edit", [
-            "request" => $request,
             "faq" => $faq
         ]);
     }

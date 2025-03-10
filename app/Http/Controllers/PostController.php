@@ -27,10 +27,9 @@ class PostController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return View
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('posts.create');
     }
@@ -88,7 +87,6 @@ class PostController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $slug
      * @return View
      */
