@@ -1,2 +1,7 @@
 *
 !.gitignore
+
+!courses.json
+!faq.json
+!posts.json
+!tests.json
