@@ -20,13 +20,13 @@ class Course extends Model
      */
     public function getECsObtained(): float
     {
-        $a = 0;
+        $count = 0;
         foreach ($this->tests as $test) {
             if ($test->best_grade >= $test->lowest_passing_grade) {
-                $a += $test->weighing_factor;
+                $count += $test->weighing_factor;
             }
         }
-        return $a * $this->credits;
+        return $count * $this->credits;
     }
 
     /**

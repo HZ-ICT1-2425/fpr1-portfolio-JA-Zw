@@ -27,8 +27,8 @@
                 </tbody>
             </table>
 
-            <p>Behaalde studiepunten: <b>{{$ecsBehaald}}</b>/{{$ecsTotaal}}EP</p>
-            <meter min="0" max="{{$ecsTotaal}}" value="{{$ecsBehaald}}" low="45" optimum="60"></meter>
+            <p>Behaalde studiepunten: <b>{{$ecsObtained}}</b>/{{$ecsTotal}}EP</p>
+            <meter min="0" max="{{$ecsTotal}}" value="{{$ecsObtained}}" low="45" optimum="60"></meter>
         @else
         Er is geen data beschikbaar.
         @endif
