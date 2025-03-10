@@ -27,7 +27,7 @@ class FAQController extends Controller
     /**
      * @return View
      */
-    public function index()
+    public function index(): View
     {
         return view("faq.index", ["faqs" => FAQ::all()]);
     }
@@ -36,7 +36,7 @@ class FAQController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view("faq.create");
     }
@@ -46,7 +46,7 @@ class FAQController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             "question" => "required",
@@ -65,7 +65,7 @@ class FAQController extends Controller
      * @param FAQ $faq
      * @return View
      */
-    public function edit(FAQ $faq)
+    public function edit(FAQ $faq): View
     {
         return view("faq.edit", [
             "faq" => $faq
@@ -75,9 +75,9 @@ class FAQController extends Controller
     /**
      * @param Request $request
      * @param FAQ $faq
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function update(Request $request, FAQ $faq)
+    public function update(Request $request, FAQ $faq): RedirectResponse
     {
         $validated = $request->validate([
             "question" => "required",
@@ -92,10 +92,10 @@ class FAQController extends Controller
     }
 
     /**
-     * @param $id
+     * @param FAQ $faq
      * @return RedirectResponse
      */
-    public function destroy(FAQ $faq)
+    public function destroy(FAQ $faq): RedirectResponse
     {
         $faq->delete();
         return redirect(route("faq.index"));

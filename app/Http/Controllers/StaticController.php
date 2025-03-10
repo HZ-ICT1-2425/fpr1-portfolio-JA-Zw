@@ -14,7 +14,7 @@ class StaticController extends Controller
     /**
      * @return View
      */
-    public function home()
+    public function home(): View
     {
         return view("home");
     }
@@ -22,7 +22,7 @@ class StaticController extends Controller
     /**
      * @return View
      */
-    public function profile()
+    public function profile(): View
     {
         return view("profile");
     }
@@ -30,7 +30,7 @@ class StaticController extends Controller
     /**
      * @return View
      */
-    public function dashboard()
+    public function dashboard(): View
     {
         $courses = Course::all();
         $ecsObtained = 0;

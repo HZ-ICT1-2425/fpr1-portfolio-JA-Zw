@@ -29,7 +29,7 @@ class PostController extends Controller
     /**
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('posts.create');
     }
@@ -39,7 +39,7 @@ class PostController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             "title" => "required",
@@ -60,7 +60,7 @@ class PostController extends Controller
      * @param $id
      * @return Post
      */
-    private function find($id)
+    private function find($id): Post
     {
         $post = Post::where("slug", $id)->first();
         if (is_null($post)) {
@@ -72,7 +72,7 @@ class PostController extends Controller
     /**
      * @return View
      */
-    public function index()
+    public function index(): View
     {
         return view('posts.posts', ['posts' => Post::all()]);
     }
@@ -81,7 +81,7 @@ class PostController extends Controller
      * @param $slug
      * @return View
      */
-    public function show($slug)
+    public function show($slug): View
     {
         return view('posts.show', ['post' => $this->find($slug)]);
     }
@@ -90,7 +90,7 @@ class PostController extends Controller
      * @param $slug
      * @return View
      */
-    public function edit($slug)
+    public function edit($slug): View
     {
         $post = $this->find($slug);
         return view("posts.edit", [
@@ -103,7 +103,7 @@ class PostController extends Controller
      * @param Post $post
      * @return RedirectResponse
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post): RedirectResponse
     {
 
         $validated = $request->validate([
@@ -121,10 +121,10 @@ class PostController extends Controller
     }
 
     /**
-     * @param $id
+     * @param Post $post
      * @return RedirectResponse
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
         return redirect(route("posts.index"));
