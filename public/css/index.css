@@ -1,0 +1,167 @@
+body {
+    color: white;
+    /*background-image: url("https://adriaan1313.github.io/img/uwu.png");
+    background-size: cover;*/
+    background-color: #222;
+    font-family: Arial, sans-serif;
+    margin: 0px;
+}
+
+.figuur-rechts {
+    float: right;
+    margin: 0px;
+}
+
+/* de standaardkleurtjes, maar nét wat lichter om het duidelijker te maken op de donkerdere achtergrond */
+a:visited {
+    color: fuchsia;
+}
+
+a {
+    color: cornflowerblue;
+}
+
+nav {
+    background: #333;
+    width: 100%;
+    font-size: 16pt;
+    position: fixed;
+    top: 0px;
+}
+
+nav div {
+    display: inline;
+    padding: 0px;
+}
+
+nav div a, .knop {
+    height: 20pt;
+    display: inline-block;
+    min-width: calc( 6em - 6px );
+    background-color: #999;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    font-size: 16pt;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.knop {
+    margin: 1px;
+}
+
+a[data-huidig] {
+    background-color: #f99;
+}
+
+a[data-huidig]:hover {
+    background-color: #faa;
+}
+
+tr[data-huidig] > td {
+    background-color: #a53;
+    font-weight: bold;
+}
+
+.sh {
+    background-image: linear-gradient(to left, #108CEA, #2B4090);
+    /*text-align: center;*/
+}
+
+nav div:hover a, .knop:hover {
+    background-color: #aaa;
+}
+
+nav div a:visited, .knop:visited {
+    color: black; /*als esv override voor in menutje*/
+}
+
+main {
+    margin-top: 24px;
+    padding: 8px;
+}
+
+.bericht {
+    border-left: 1.5pt solid white;
+    padding-left: 6px;
+    margin-left: 4px;
+    margin-right: 4px;
+    overflow-x: auto;
+}
+
+article:nth-of-type(odd) {
+    background-color: #444;
+}
+
+article:nth-of-type(even) {
+    background-color: #333;
+}
+
+.linker-links {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    background-color: #131349;
+}
+
+.linker-links > ul {
+    margin: 0px;
+    list-style-type: none;
+    padding: 2px;
+}
+
+h1, h2 {
+    margin-left: 5px;
+    margin-top: 0px;
+}
+
+p, ul {
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+article {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+hr {
+    margin: 0px;
+}
+
+td {
+    border: 1px solid white;
+}
+
+table {
+    border-collapse: collapse;
+
+}
+
+/*helaas kan je niet [value >= 45] doen, dat is jammer*/
+meter {
+    height: 18px;
+    width: 450px;
+    border: none;
+}
+
+.ietsje-groter {
+    font-size: 16pt;
+}
+
+#plekvulling {
+    background-image: url(https://hz.nl/uploads/media/2.Algemeen/Locaties/Groene-Woud/_600x450_crop_center-center_90_none/2185129/Groene-Woud-buitenkant-header-1.webp);
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    color: black;
+    font-size: xx-large;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.foto-homepagina {
+    height: 325px;
+}
