@@ -44,28 +44,32 @@
     "course_id": 6,
     "name": "Database exam",
     "weighing_factor": 0.1,
-    "lowest_passing_grade": 5.5
+    "lowest_passing_grade": 5.5,
+	"best_grade" : 9.1
   },
   {
     "id": 7,
     "course_id": 6,
     "name": "Groepsportfolio op requirements",
     "weighing_factor": 0.25,
-    "lowest_passing_grade": 5.5
+    "lowest_passing_grade": 5.5,
+	"best_grade": 8.3
   },
   {
     "id": 8,
     "course_id": 6,
     "name": "Groepspresentatie project resultaat",
     "weighing_factor": 0.25,
-    "lowest_passing_grade": 5.5
+    "lowest_passing_grade": 5.5,
+	"best_grade": 6.3
   },
   {
     "id": 9,
     "course_id": 6,
     "name": "On-site casus toets",
     "weighing_factor": 0.4,
-    "lowest_passing_grade": 5.5
+    "lowest_passing_grade": 5.5,
+	"best_grade": 8.8
   },
   {
     "id": 10,
